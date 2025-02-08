@@ -1,5 +1,6 @@
 import re
 import random
+import app
 
 respostas = {
     r"oi|olá|e aí|eae|eai|opa": ["Olá", "Oi", "E aí, tudo bem?", "Opa, tudo certo?"],
@@ -8,3 +9,34 @@ respostas = {
     r"o que você faz\??|qual a sua função\??": ["Eu ajudo os usuários a entenderem melhor a plataforma e como utilizá-la da maneira que lhes for útil", "Minha função é te ajudar a navegar pela plataforma da melhor maneira", "Eestou aqui para te ajudar a utlizar a plataforma, qual a sua dúvida?"],
     r"tchau|até mais|até a próxima|adeus|até logo|falou": ["Tchau, foi um prazer ajudar!", "Até mais, quando precisar estou aqui!", "Até logo, foi bom falar com você."]
 }
+def responder(mensagem_usuario):
+    mensagem_usuario = mensagem_usuario.lower()
+
+    for regulares, respostas_possiveis in respostas.items():
+        if re.search(regulares, mensagem_usuario):
+            return random.choice(respostas_possiveis)
+            
+
+    return "Não entendi, pode repetir ou reformular a pergunta?"
+
+print("Chatbot Pyman\n")
+print("Para encerrar a conversa, digite 'sair'\n")
+
+while True:
+    entrada = app.audicao()
+    
+    if entrada.texto.lower == 'sair':
+        print("Pyman: Até a próxima!")
+        break
+
+    resposta = responder(entrada)
+    print(f"Pyman: {resposta}")
+    app.falar(resposta)
+
+'''def escolha():
+    for regulares, respostas_possiveis in respostas:
+        print(respostas_possiveis.random())
+
+print("***Conversa - Chatbot***")
+print(input("Você: "))
+print("Pyman: "+escolha())'''

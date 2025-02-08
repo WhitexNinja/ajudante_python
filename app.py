@@ -19,7 +19,8 @@ def audicao():
             fala = recognizer.listen(microfone)
             # Transcreve a fala para texto
             texto = recognizer.recognize_google(fala, language="pt-BR") #A biblioteca usa uma API do Google
-            print(f"Você disse: {texto}")
+            #print(f"Você disse: {texto}")
+            print(f"Você: {texto}")
             return texto
         except sr.UnknownValueError:
             print("Não entendi o que você disse.")
