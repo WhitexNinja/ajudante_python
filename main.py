@@ -1,6 +1,6 @@
 import re
 import random
-import app
+import config_conversa
 
 respostas = {
     r"oi|olá|e aí|eae|eai|opa": ["Olá", "Oi", "E aí, tudo bem?", "Opa, tudo certo?"],
@@ -23,7 +23,7 @@ print("Chatbot Pyman\n")
 print("Para encerrar a conversa, digite 'sair'\n")
 
 while True:
-    entrada = app.audicao()
+    entrada = config_conversa.audicao()
 
     if entrada is None:
         continue #Se o reconhecimento falhar, tenta novamente
@@ -34,7 +34,7 @@ while True:
 
     resposta = responder(entrada)
     print(f"Pyman: {resposta}")
-    app.falar(resposta)
+    config_conversa.falar(resposta)
 
 '''def escolha():
     for regulares, respostas_possiveis in respostas:
