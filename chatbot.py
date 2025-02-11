@@ -24,8 +24,11 @@ print("Para encerrar a conversa, digite 'sair'\n")
 
 while True:
     entrada = app.audicao()
+
+    if entrada is None:
+        continue #Se o reconhecimento falhar, tenta novamente
     
-    if entrada.texto.lower == 'sair':
+    if entrada.lower() == 'sair':
         print("Pyman: Até a próxima!")
         break
 
